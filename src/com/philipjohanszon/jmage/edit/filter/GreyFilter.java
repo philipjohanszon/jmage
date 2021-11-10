@@ -1,10 +1,11 @@
-package com.philipjohanszon.jmage.filter;
+package com.philipjohanszon.jmage.edit.filter;
 
 import com.philipjohanszon.jmage.image.Pixel;
+import com.philipjohanszon.jmage.image.Image;
 
 public class GreyFilter extends Filter {
     @Override
-    public Pixel[][] apply(Pixel[][] pixels, int width, int height) {
+    public void apply(Image image) {
 
         FilterFunction func = (pixel) -> {
             int averageColorValue = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;
@@ -16,6 +17,6 @@ public class GreyFilter extends Filter {
             return pixel;
         };
 
-        return map(pixels, width, height, func);
+        map(image, func);
     }
 }

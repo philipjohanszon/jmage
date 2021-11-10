@@ -1,11 +1,13 @@
 package com.philipjohanszon.jmage.image;
 
-import com.philipjohanszon.jmage.filter.Filter;
+import com.philipjohanszon.jmage.edit.Edit;
+import com.philipjohanszon.jmage.edit.filter.Filter;
 
 import java.io.*;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Image {
     //image stuff
@@ -22,7 +24,7 @@ public class Image {
     private int height;
 
     //added stuff
-    private ArrayList<Filter> filters = new ArrayList<>();
+    private ArrayList<Edit> edits = new ArrayList<>();
 
     public void create(String filename, int height, int width) {
         if (!this.isCreated) {
@@ -72,12 +74,26 @@ public class Image {
                 int alpha = (color & 0xff000000) >>> 24;
 
                 Pixel pixel = new Pixel(red, green, blue, alpha);
+                Pixel originalPixel = new Pixel(red, green, blue, alpha);
 
                 this.pixels[x][y] = pixel;
             }
         }
 
-        this.originalPixels = this.pixels;
+        this.originalPixels = clonePixels(pixels);
+    }
+
+    private Pixel[][] clonePixels(Pixel[][] pixels) {
+        Pixel[][] newPixel = new Pixel[width][height];
+
+        for ( int y = 0; y < height; y++ ) {
+            for ( int x = 0; x < width; x++ ) {
+                Pixel selectedPixel = pixels[x][y];
+                newPixel[x][y] = new Pixel(selectedPixel.getRed(), selectedPixel.getGreen(), selectedPixel.getBlue(), selectedPixel.getAlpha());
+            }
+        }
+
+        return newPixel;
     }
 
     public void export() {
@@ -95,9 +111,21 @@ public class Image {
     }
 
     public void addFilter(Filter filter) {
-        this.filters.add(filter);
+        addEdit(filter);
+        filter.apply(this);
+    }
 
-        this.pixels = filter.apply(this.pixels, width, height);
+    private void addEdit(Edit edit) {
+        this.edits.add(edit);
+    }
+
+    public void rollback() {
+        this.edits.remove(edits.size() - 1);
+        this.pixels = clonePixels(originalPixels);
+
+        for(Edit edit : edits) {
+            edit.apply(this);
+        }
     }
 
     //sets the pixel values in the image variable
@@ -109,6 +137,7 @@ public class Image {
 
                 image.setRGB(x, y, color);
             }
+
         }
     }
 

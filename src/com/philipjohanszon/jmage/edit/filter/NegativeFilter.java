@@ -1,10 +1,11 @@
-package com.philipjohanszon.jmage.filter;
+package com.philipjohanszon.jmage.edit.filter;
 
 import com.philipjohanszon.jmage.image.Pixel;
+import com.philipjohanszon.jmage.image.Image;
 
 public class NegativeFilter extends Filter {
     @Override
-    public Pixel[][] apply(Pixel[][] pixels, int width, int height) {
+    public void apply(Image image) {
 
         FilterFunction func = (pixel) -> {
             pixel.setRed(255 - pixel.getRed());
@@ -14,6 +15,6 @@ public class NegativeFilter extends Filter {
             return pixel;
         };
 
-        return map(pixels, width, height, func);
+       map(image, func);
     }
 }
