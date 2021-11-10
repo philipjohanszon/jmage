@@ -1,6 +1,6 @@
 package com.philipjohanszon.jmage.filter;
 
-import com.philipjohanszon.jmage.Pixel;
+import com.philipjohanszon.jmage.image.Pixel;
 
 public class GreyFilter extends Filter {
     @Override

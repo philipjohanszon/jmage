@@ -1,10 +1,10 @@
-package com.philipjohanszon.jmage;
+package com.philipjohanszon.jmage.image;
 
 public class Pixel {
-    private int red = 255;
-    private int blue = 255;
-    private int green = 255;
-    private int alpha = 255;
+    private int red;
+    private int blue;
+    private int green;
+    private int alpha;
 
     Pixel(int r, int b, int g, int alpha) {
         this.red = r;

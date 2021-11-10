@@ -1,4 +1,4 @@
-package com.philipjohanszon.jmage;
+package com.philipjohanszon.jmage.image;
 
 import com.philipjohanszon.jmage.filter.Filter;
 
@@ -49,7 +49,7 @@ public class Image {
 
                 loadPixels();
             } catch (IOException exception) {
-                System.out.println(exception);
+                exception.printStackTrace();
             }
         }
     }
@@ -90,7 +90,7 @@ public class Image {
         }
         catch(IOException exception)
         {
-            System.out.println(exception);
+            exception.printStackTrace();
         }
     }
 
