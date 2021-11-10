@@ -101,7 +101,8 @@ public class Image {
 
         try
         {
-            ImageIO.write(image, "jpg", file);
+            System.out.println(getFileExtension());
+            ImageIO.write(image, getFileExtension(), file);
             System.out.println("Successfully exported");
         }
         catch(IOException exception)
@@ -143,6 +144,12 @@ public class Image {
 
     public String getFilename() {
         return filename;
+    }
+
+    public String getFileExtension() {
+        String name = file.getName();
+        int lastIndexOf = name.lastIndexOf(".") + 1;
+        return name.substring(lastIndexOf);
     }
 
     public void setFilename(String filename) {
