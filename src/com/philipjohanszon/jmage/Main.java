@@ -1,5 +1,6 @@
 package com.philipjohanszon.jmage;
 import com.philipjohanszon.jmage.filter.GreyFilter;
+import com.philipjohanszon.jmage.filter.NegativeFilter;
 
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ public class Main {
         Image image = new Image();
         image.load(filename);
 
-        image.addFilter(new GreyFilter());
+        image.addFilter(new NegativeFilter());
 
         image.export();
     }

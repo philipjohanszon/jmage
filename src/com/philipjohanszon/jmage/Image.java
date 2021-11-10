@@ -105,7 +105,7 @@ public class Image {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 Pixel pixel = getPixel(x, y);
-                int color = ( pixel.getAlpha()<<24 ) | ( pixel.getRed() << 16) | ( pixel.getGreen() << 8 ) | ( pixel.getBlue() << 0);
+                int color = ( pixel.getAlpha()<<24 ) | ( pixel.getRed() << 16) | ( pixel.getGreen() << 8 ) | (pixel.getBlue());
 
                 image.setRGB(x, y, color);
             }

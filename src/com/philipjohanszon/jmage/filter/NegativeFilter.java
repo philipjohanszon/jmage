@@ -2,16 +2,14 @@ package com.philipjohanszon.jmage.filter;
 
 import com.philipjohanszon.jmage.Pixel;
 
-public class GreyFilter extends Filter {
+public class NegativeFilter extends Filter {
     @Override
     public Pixel[][] apply(Pixel[][] pixels, int width, int height) {
 
         FilterFunction func = (pixel) -> {
-            int averageColorValue = (pixel.getRed() + pixel.getGreen() + pixel.getBlue())/3;
-
-            pixel.setRed(averageColorValue);
-            pixel.setGreen(averageColorValue);
-            pixel.setBlue(averageColorValue);
+            pixel.setRed(255 - pixel.getRed());
+            pixel.setGreen(255 - pixel.getGreen());
+            pixel.setBlue(255 - pixel.getBlue());
 
             return pixel;
         };
