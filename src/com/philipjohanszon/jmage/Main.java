@@ -15,7 +15,26 @@ public class Main {
         Image image = new Image();
         image.load(filename);
 
-        image.addFilter(new NegativeFilter());
+        boolean isRunning = true;
+        while(isRunning) {
+            System.out.println("Write your next command, write help for help");
+            String command = scanner.next();
+
+            switch (command) {
+                case "help":
+                    System.out.println("Write <stop> to stop, <negative> to add a negative filter or <grey> to add an grey filter");
+                    break;
+                case "stop":
+                    isRunning = false;
+                    break;
+                case "negative":
+                    image.addFilter(new NegativeFilter());
+                    break;
+                case "grey":
+                    image.addFilter(new GreyFilter());
+                    break;
+            }
+        }
 
         image.export();
     }
