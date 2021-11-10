@@ -1,4 +1,4 @@
-package com.jmage;
+package com.philipjohanszon.jmage;
 
 public class Pixel {
     private int red = 255;

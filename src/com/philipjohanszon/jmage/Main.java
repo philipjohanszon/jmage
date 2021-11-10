@@ -1,5 +1,5 @@
-package com.jmage;
-import com.filter.GreyFilter;
+package com.philipjohanszon.jmage;
+import com.philipjohanszon.jmage.filter.GreyFilter;
 
 import java.util.Scanner;
 

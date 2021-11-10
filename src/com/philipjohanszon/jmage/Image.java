@@ -1,6 +1,6 @@
-package com.jmage;
+package com.philipjohanszon.jmage;
 
-import com.filter.Filter;
+import com.philipjohanszon.jmage.filter.Filter;
 
 import java.io.*;
 import java.awt.image.BufferedImage;

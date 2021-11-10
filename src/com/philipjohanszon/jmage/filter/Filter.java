@@ -1,6 +1,6 @@
-package com.filter;
+package com.philipjohanszon.jmage.filter;
 
-import com.jmage.Pixel;
+import com.philipjohanszon.jmage.Pixel;
 
 public class Filter {
     public Pixel[][] apply(Pixel[][] pixels, int width, int height) {
