@@ -6,7 +6,7 @@ public class Pixel {
     private int green;
     private int alpha;
 
-    Pixel(int r, int b, int g, int alpha) {
+    public Pixel(int r, int b, int g, int alpha) {
         this.red = r;
         this.blue = b;
         this.green = g;

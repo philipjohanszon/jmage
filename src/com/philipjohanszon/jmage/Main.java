@@ -1,6 +1,7 @@
 package com.philipjohanszon.jmage;
 import com.philipjohanszon.jmage.edit.filter.GreyFilter;
 import com.philipjohanszon.jmage.edit.filter.NegativeFilter;
+import com.philipjohanszon.jmage.edit.filter.blurs.AverageBlurFilter;
 import com.philipjohanszon.jmage.image.Image;
 
 import java.util.Scanner;
@@ -26,6 +27,10 @@ public class Main {
                 case "stop" -> isRunning = false;
                 case "negative" -> image.addFilter(new NegativeFilter());
                 case "grey" -> image.addFilter(new GreyFilter());
+                case "average" -> image.addFilter(new AverageBlurFilter(1));
+                case "average2" -> image.addFilter(new AverageBlurFilter(2));
+                case "average3" -> image.addFilter(new AverageBlurFilter(3));
+                case "average4" -> image.addFilter(new AverageBlurFilter(4));
                 case "rollback" -> image.rollback();
             }
         }
